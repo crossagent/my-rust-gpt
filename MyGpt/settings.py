@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-+9ys_pqq087-w(inzkwj#wkqh4(&c6hulxknrquf14z440d@n&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['chat-crgt.azurewebsites.net']
+ALLOWED_HOSTS = ['chat-crgt.azurewebsites.net',
+                 '127.0.0.1']
 
 # Application definition
 
