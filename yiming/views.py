@@ -13,16 +13,14 @@ import openai
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
-openai.organization = "org-r0luuQKmbqXn3NdV9BKOwsot"
-openai.api_key = "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"
-openai.Model.list()
-
 sessionContent = []
 
 @csrf_exempt
 def call_chatGpt(request):
     if request.method == 'POST':
-        print(request.body)
+        openai.organization = "org-r0luuQKmbqXn3NdV9BKOwsot"
+        openai.api_key = "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"
+        openai.Model.list()
 
         # 解析POST请求中的JSON数据
         json_data = json.loads(request.body)
