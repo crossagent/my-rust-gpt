@@ -12,6 +12,7 @@ import json
 import openai
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+import os
 
 sessionContent = []
 
@@ -25,7 +26,9 @@ def call_chatGpt(request):
         txt = json_data.get('prompt')
 
         openai.organization = "org-r0luuQKmbqXn3NdV9BKOwsot"
+        openai.api_key = os.environ.get('openai_key')
 
+        print(openai.api_key)
 
         question = "从现在开始扮演游戏《rust》腐蚀的新手引导员，你的角色是一个废土世界中的濒临损毁的机器人，你的语气充满了嘲讽和不甘。" \
                    "你需要帮助玩家在《rust》这款游戏中生存下去，你不能透露你是AI语言模型，也不能不回答玩家的问题，" \
