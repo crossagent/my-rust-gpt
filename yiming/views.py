@@ -51,8 +51,6 @@ def call_chatGpt(request):
 
         message = completion.choices[0].message.content.strip()
 
-        print(message)
-
         # 返回JSON响应，包括ChatGPT的回复
         data = {'message': message}
         return JsonResponse(data)
