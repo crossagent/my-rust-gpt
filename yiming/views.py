@@ -25,8 +25,6 @@ def call_chatGpt(request):
         # 解析POST请求中的JSON数据
         json_data = json.loads(request.body)
 
-        txt = json_data.get('prompt')
-
         openai.organization = env("OpenAIOrganizationID")
 
         openai.api_key = env('OpenAIkey')
@@ -55,9 +53,7 @@ def call_chatGpt(request):
             # 使用ChatGPT进行对话
             completion = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
-                messages=[{"role": "user",
-                           #"content": question + txt}]
-                           "content": txt}]
+                messages=json_data
             )
         except openai.error.AuthenticationError as e:
             raise ValueError("API密钥无效或过期")
